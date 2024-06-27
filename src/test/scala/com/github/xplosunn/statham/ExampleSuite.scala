@@ -62,16 +62,18 @@ class ExampleSuite extends munit.FunSuite {
     implicit val personIdJsonDescriptor: JsonDescriptor[PersonId] = implicitly[JsonDescriptor[String]].dimap(PersonId.apply, _.id)
     val teacherJsonDescriptor: JsonDescriptor[Teacher] = JsonDescriptor.auto.autoDerived
 
-    val updatedTeacherJsonDescriptor: JsonDescriptor[Teacher] =
-      JsonConfigure.configureOrThrow(
-        teacherJsonDescriptor,
-        _.isObject(
-          _.hasField(
-            "partTime",
-            _.addComment("true when the teacher only works part time")
-          )
-        )
-      )
+    // Not implemented yet :)
+
+//    val updatedTeacherJsonDescriptor: JsonDescriptor[Teacher] =
+//      JsonConfigure.configureOrThrow(
+//        teacherJsonDescriptor,
+//        _.isObject(
+//          _.hasField(
+//            "partTime",
+//            _.addComment("true when the teacher only works part time")
+//          )
+//        )
+//      )
 
 //    val obtained = updatedTeacherJsonDescriptor.humanDoc
 //    val expected =
@@ -80,7 +82,5 @@ class ExampleSuite extends munit.FunSuite {
 //        |  partTime: boolean // true when the teacher only works part time
 //        |}""".stripMargin
 //    assertEquals(obtained, expected)
-
-    // Not implemented yet :)
   }
 }
